@@ -1,0 +1,12 @@
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          r2dbc: DEBUG
+
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/books_database
+    username: book
+    password: book
