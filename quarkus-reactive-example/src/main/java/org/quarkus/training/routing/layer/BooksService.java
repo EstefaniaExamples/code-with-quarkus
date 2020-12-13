@@ -1,4 +1,4 @@
-package org.quarkus.training.reactive.routes;
+package org.quarkus.training.routing.layer;
 
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;

@@ -1,4 +1,4 @@
-package org.quarkus.training.reactive.routes;
+package org.quarkus.training.routing.layer;
 
 import io.quarkus.vertx.web.Body;
 import io.quarkus.vertx.web.Param;

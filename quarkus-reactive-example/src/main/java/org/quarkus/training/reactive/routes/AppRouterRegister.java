@@ -1,4 +1,4 @@
-package org.quarkus.training.routing.layer;
+package org.quarkus.training.reactive.routes;
 
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;

@@ -1,4 +1,4 @@
-package org.quarkus.training.routing.layer;
+package org.quarkus.training.reactive.routes;
 
 import io.smallrye.mutiny.Multi;
 import io.vertx.core.http.HttpServerResponse;
