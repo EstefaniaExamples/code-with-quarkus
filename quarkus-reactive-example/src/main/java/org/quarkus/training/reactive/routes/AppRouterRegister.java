@@ -31,7 +31,7 @@ public class AppRouterRegister {
         router.get("/books/:id").produces(MediaType.APPLICATION_JSON)
                 .handler(booksHandler::getBookById);
 
-        router.delete("/book/:id")
+        router.delete("/books/:id")
                 .handler(booksHandler::deleteBookById);
 
         router.post("/book")

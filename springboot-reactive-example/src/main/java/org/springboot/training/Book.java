@@ -1,16 +1,14 @@
 package org.springboot.training;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Book {
-    @JsonProperty
+    @Id
     public Long id;
-    @JsonProperty
     public String title;
-    @JsonProperty
+    @JsonProperty("isbn_13")
     public String isbn_13;
 
     public Book() {
