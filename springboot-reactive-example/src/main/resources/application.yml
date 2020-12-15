@@ -7,6 +7,6 @@ logging:
 
 spring:
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/books_database
+    url: ${POSTGRESQL_R2DBC_URL}  # r2dbc:postgresql://localhost:5432/books_database
     username: book
     password: book

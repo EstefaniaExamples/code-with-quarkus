@@ -1,11 +1,8 @@
 package org.springboot.training;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-public class ApplicationTest {
-
+public class BookRepositoryTest {
     @Test
     void loadContext() {
 

@@ -49,6 +49,7 @@ public class BooksHandler {
         LOG.info("Saving book ...");
         return request.bodyToMono(Book.class)
                 .flatMap(bookRepository::save)
-                .flatMap(book -> ok().body(Mono.just(book), Book.class));
+                .flatMap(book -> ok().header("Location", "/books/" + book.id)
+                        .body(Mono.just(book), Book.class));
     }
 }

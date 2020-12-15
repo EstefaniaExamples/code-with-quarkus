@@ -113,6 +113,9 @@
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-maven-plugin</artifactId>
                 <version>${quarkus-plugin.version}</version>
+                <configuration>
+                    <nativeImageXmx>4096m</nativeImageXmx>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
