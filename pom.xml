@@ -10,6 +10,8 @@
   <modules>
     <module>quarkus-reactive-example</module>
     <module>springboot-reactive-example</module>
+    <module>springboot-imperative-example</module>
+    <module>quarkus-imperative-example</module>
   </modules>
 
 </project>
