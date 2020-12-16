@@ -57,10 +57,10 @@ public class AppRouterRegisterTest {
                 .jsonPath("$").isArray()
                 .jsonPath("$.[0].id").isEqualTo(997)
                 .jsonPath("$.[0].title").isEqualTo("Understanding Bean Validation")
-                .jsonPath("$.[0].isbn_13").isEqualTo("9781980399025")
+                .jsonPath("$.[0].description").isEqualTo("In this fascicle will you will learn Bean Validation and use its different APIs to apply constraints on a bean, validate all sorts of constraints and write your own constraints")
                 .jsonPath("$.[1].id").isEqualTo(998)
                 .jsonPath("$.[1].title").isEqualTo("Understanding JPA")
-                .jsonPath("$.[1].isbn_13").isEqualTo("9781093918977");
+                .jsonPath("$.[1].description").isEqualTo("In this fascicle, you will learn Java Persistence API, its annotations for mapping entities, as well as the Java Persistence Query Language and entity life cycle");
     }
 
     @Test
@@ -74,7 +74,7 @@ public class AppRouterRegisterTest {
                 .expectBody()
                 .jsonPath("$.id").isEqualTo(998)
                 .jsonPath("$.title").isEqualTo("Understanding JPA")
-                .jsonPath("$.isbn_13").isEqualTo("9781093918977");
+                .jsonPath("$.description").isEqualTo("In this fascicle, you will learn Java Persistence API, its annotations for mapping entities, as well as the Java Persistence Query Language and entity life cycle");
     }
 
     @Test

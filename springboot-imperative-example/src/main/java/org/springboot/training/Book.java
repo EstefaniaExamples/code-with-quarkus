@@ -1,7 +1,5 @@
 package org.springboot.training;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,8 +12,8 @@ public class Book {
     public Long id;
 
     public String title;
-    @JsonProperty("isbn_13")
-    public String isbn_13;
+    public String description;
+    public String author;
 
     public Book() {
     }
@@ -36,11 +34,19 @@ public class Book {
         this.title = title;
     }
 
-    public String getIsbn_13() {
-        return isbn_13;
+    public String getDescription() {
+        return description;
     }
 
-    public void setIsbn_13(String isbn_13) {
-        this.isbn_13 = isbn_13;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
