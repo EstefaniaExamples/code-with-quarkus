@@ -2,12 +2,16 @@ package org.springboot.training;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@SpringBootApplication
+@SpringBootApplication(
+		exclude = SpringDataWebAutoConfiguration.class,
+		proxyBeanMethods = false
+)
 public class Application {
 	private static ApplicationContext applicationContext;
 
@@ -22,13 +26,11 @@ public class Application {
 		String SPACE = " ";
 
 		Arrays.stream(allBeanNames)
-				.map(beanName -> {
-					return new StringBuilder()
-							.append(counter.getAndIncrement())
-							.append(SPACE)
-							.append(beanName)
-							.toString();
-				})
+				.map(beanName -> new StringBuilder()
+						.append(counter.getAndIncrement())
+						.append(SPACE)
+						.append(beanName)
+						.toString())
 				.forEach(System.out::println);
 	}
 

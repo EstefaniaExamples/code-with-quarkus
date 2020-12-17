@@ -1,7 +1,5 @@
 package org.springboot.training.reactive.routes;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springboot.training.Book;
 import org.springboot.training.BookRepository;
 import org.springframework.stereotype.Service;
@@ -9,12 +7,14 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
+import java.util.logging.Logger;
+
 import static org.springframework.web.reactive.function.server.ServerResponse.notFound;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
 @Service
 public class BooksHandler {
-    private static final Logger LOG = LoggerFactory.getLogger(BooksHandler.class);
+    private static final Logger LOG = Logger.getLogger(BooksHandler.class.getName());
     private final BookRepository bookRepository;
 
     public BooksHandler(final BookRepository bookRepository) {

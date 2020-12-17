@@ -16,6 +16,7 @@
     <name>${project.artifactId}</name>
 
     <properties>
+        <start-class>org.springboot.training.Application</start-class>
         <java.version>11</java.version>
         <testcontainers.version>1.15.1</testcontainers.version>
         <spring-boot.build-image.imageName>192.168.64.3:32000/spring-boot-reactive:latest</spring-boot.build-image.imageName>
@@ -34,6 +35,16 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.experimental</groupId>
+            <artifactId>spring-graal-native</artifactId>
+            <version>0.6.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-indexer</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-r2dbc</artifactId>
@@ -96,6 +107,21 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <build>
         <plugins>
             <plugin>
@@ -112,4 +138,61 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>graal</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.graalvm.nativeimage</groupId>
+                        <artifactId>native-image-maven-plugin</artifactId>
+                        <version>20.2.0</version>
+                        <configuration>
+                            <imageName>${project.artifactId}</imageName>
+                            <mainClass>org.springboot.training.Application</mainClass>
+                            <buildArgs>
+                                --no-server
+                                --no-fallback
+                                --allow-incomplete-classpath
+                                --report-unsupported-elements-at-runtime
+                                -H:+ReportExceptionStackTraces
+                                -H:+TraceClassInitialization
+                                -Dspring.native.verify=true
+                                -Dspring.graal.mode=initialization-only
+                                -Dspring.graal.dump-config=/tmp/computed-reflect-config.json
+                                -Dspring.graal.verbose=true
+                                -Dspring.graal.skip-logback=true
+                                --initialize-at-build-time=javax.el.MapELResolver
+                                --initialize-at-build-time=javax.el.ListELResolver
+                                --initialize-at-build-time=sun.instrument.InstrumentationImpl
+                                --initialize-at-build-time=io.r2dbc.spi.IsolationLevel,io.r2dbc.spi
+                                --initialize-at-build-time=io.r2dbc.spi.ConstantPool,io.r2dbc.spi.Assert,io.r2dbc.spi.ValidationDepth
+                                --initialize-at-build-time=org.reactivestreams.Publisher
+                                --initialize-at-build-time=org.springboot.training.BookRepository
+                                --initialize-at-build-time=org.springframework.data.r2dbc.connectionfactory
+                                --initialize-at-run-time=org.springframework.data.r2dbc.connectionfactory.ConnectionFactoryUtils
+                                --initialize-at-run-time=io.netty.channel.unix.Socket
+                                --initialize-at-run-time=io.netty.channel.unix.IovArray
+                                --initialize-at-run-time=io.netty.channel.epoll.EpollEventLoop
+                                --initialize-at-run-time=io.netty.channel.unix.Errors
+                            </buildArgs>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>native-image</goal>
+                                </goals>
+                                <phase>package</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

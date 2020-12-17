@@ -219,10 +219,10 @@
               <stringProp name="-1993889503">Memory</stringProp>
               <stringProp name="0"></stringProp>
             </collectionProp>
-            <collectionProp name="506007220">
+            <collectionProp name="917712290">
               <stringProp name="-1204607085">localhost</stringProp>
               <stringProp name="1600768">4444</stringProp>
-              <stringProp name="2112896831">Disks I/O</stringProp>
+              <stringProp name="66952">CPU</stringProp>
               <stringProp name="0"></stringProp>
             </collectionProp>
           </collectionProp>

@@ -25,7 +25,8 @@ public class BookResourceTest {
     public void shouldGetBookById() {
         given()
                 .pathParam("id", 997)
-                .when().get("/books/{id}")
+                .when()
+                .get("/books/{id}")
                 .then()
                 .statusCode(200)
                 .body(is("{\"id\":997,\"title\":\"Understanding Bean Validation\",\"description\":\"In this fascicle will you will learn Bean Validation and use its different APIs to apply constraints on a bean, validate all sorts of constraints and write your own constraints\",\"author\":\"Antonio Goncalves\"}"));
@@ -35,8 +36,9 @@ public class BookResourceTest {
     @DisplayName("The service should response not found when the bood id does not exist")
     public void shouldNotGetBookById() {
         given()
-                .pathParam("id", 91)
-                .when().get("/books/{id}")
+                .pathParam("id", 95)
+                .when()
+                .get("/books/{id}")
                 .then()
                 .statusCode(404);
     }
