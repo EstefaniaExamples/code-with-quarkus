@@ -5,8 +5,19 @@ logging:
         data:
           r2dbc: DEBUG
 
+books-datasource:
+  protocol: "postgresql"
+  host: "localhost"
+  port: 5432
+  database: "books_database"
+  credentials: "wmS4Nal7gXl290hTuEFfkvDxphj8GijqsdDcC8IfyCQlnvPF9xiBVZeeVMZE4RjC"
+  read-only: false
+  pool:
+    min-connections: 1
+    max-connections: 3
+
 spring:
-  r2dbc:
-    url: ${POSTGRESQL_R2DBC_URL}  # r2dbc:postgresql://localhost:5432/books_database
-    username: book
-    password: book
+  main:
+    banner-mode: off
+  jmx:
+    enabled: false

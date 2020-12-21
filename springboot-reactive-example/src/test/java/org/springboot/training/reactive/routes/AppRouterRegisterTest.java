@@ -19,9 +19,8 @@ import org.testcontainers.utility.DockerImageName;
 @AutoConfigureWebTestClient
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AppRouterRegisterTest {
-    private static final String DATASOURCE_URL_PROPERTY = "spring.r2dbc.url";
-    private static final String DATASOURCE_URL_USER = "spring.r2dbc.username";
-    private static final String DATASOURCE_URL_PASSWORD = "spring.r2dbc.password";
+    private static final String DATASOURCE_PORT = "books-datasource.port";
+    private static final String DATASOURCE_URL_PASSWORD = "books-datasource.credentials";
 
     private final WebTestClient webTestClient;
 
@@ -39,9 +38,7 @@ public class AppRouterRegisterTest {
 
     @DynamicPropertySource
     static void setUpProperties(final DynamicPropertyRegistry registry) {
-        final String pgR2dbcUrl = POSTGRE_SQL_CONTAINER.getJdbcUrl().replaceAll("jdbc", "r2dbc");
-        registry.add(DATASOURCE_URL_PROPERTY, () -> pgR2dbcUrl);
-        registry.add(DATASOURCE_URL_USER, POSTGRE_SQL_CONTAINER::getUsername);
+        registry.add(DATASOURCE_PORT, POSTGRE_SQL_CONTAINER::getFirstMappedPort);
         registry.add(DATASOURCE_URL_PASSWORD, POSTGRE_SQL_CONTAINER::getPassword);
     }
 

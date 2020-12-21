@@ -1,7 +1,7 @@
 package org.springboot.training.reactive.routes;
 
-import org.springboot.training.Book;
-import org.springboot.training.BookRepository;
+import org.springboot.training.model.Book;
+import org.springboot.training.repositories.BookRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;

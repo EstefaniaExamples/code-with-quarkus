@@ -11,7 +11,7 @@ import java.util.Map;
 @QuarkusTestResource(TestContainersPostgresqlTestResource.Initializer.class)
 public class TestContainersPostgresqlTestResource {
     public static class Initializer implements QuarkusTestResourceLifecycleManager {
-        private PostgreSQLContainer postgreSQLContainer;
+        private PostgreSQLContainer<?> postgreSQLContainer;
 
         @Override
         public Map<String, String> start() {
