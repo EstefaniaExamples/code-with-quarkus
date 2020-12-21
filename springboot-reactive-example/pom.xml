@@ -46,11 +46,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-indexer</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-configuration-processor</artifactId>-->
-<!--            <optional>true</optional>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -64,12 +64,10 @@
         <dependency>
             <groupId>io.r2dbc</groupId>
             <artifactId>r2dbc-postgresql</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>io.micrometer</groupId>
@@ -148,7 +146,6 @@
                             <BP_BOOT_NATIVE_IMAGE>true</BP_BOOT_NATIVE_IMAGE>
                             <BP_BOOT_NATIVE_IMAGE_BUILD_ARGUMENTS>
                                 -Dspring.spel.ignore=true
-                                -Dspring.native.remove-yaml-support=true
                             </BP_BOOT_NATIVE_IMAGE_BUILD_ARGUMENTS>
                         </env>
                     </image>

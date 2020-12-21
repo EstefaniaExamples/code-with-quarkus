@@ -7,6 +7,7 @@ import io.r2dbc.spi.Option;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
+import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +16,7 @@ import static io.r2dbc.pool.PoolingConnectionFactoryProvider.*;
 import static io.r2dbc.spi.ConnectionFactoryOptions.*;
 
 @Configuration(proxyBeanMethods = false)
+@EnableR2dbcRepositories
 public class BooksDataSource extends AbstractR2dbcConfiguration {
     private final DataSourceProperties dataSourceProperties;
 
