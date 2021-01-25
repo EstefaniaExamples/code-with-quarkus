@@ -1,7 +1,15 @@
+This is the demo repository for the talk Is Quarkus in the chasm in 2021?
+
+The presentation is available at:
+
+https://estefaniaexamples.github.io/code-with-quarkus
+
 # code-with-quarkus project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+
+https://estefaniaexamples.github.io/code-with-quarkus
 
 ## Running the application in dev mode
 
