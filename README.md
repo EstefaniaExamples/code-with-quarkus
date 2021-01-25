@@ -1,8 +1,6 @@
 This is the demo repository for the talk **Crossing the chasm: Quarkus case**
 
-The presentation is available at:
-
-https://estefaniaexamples.github.io/code-with-quarkus
+The presentation is available at: https://estefaniaexamples.github.io/code-with-quarkus
 
 # code-with-quarkus project
 
