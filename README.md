@@ -1,5 +1,4 @@
-This is the demo repository for the talk Is Quarkus in the chasm in 2021?
-
+This is the demo repository for the talk **Crossing the chasm: Quarkus case**
 The presentation is available at:
 
 https://estefaniaexamples.github.io/code-with-quarkus
