@@ -24,9 +24,9 @@ cp -R META-INF BOOT-INF/classes
 LIBPATH=`find BOOT-INF/lib | tr '\n' ':'`
 CP=BOOT-INF/classes:$LIBPATH
 
-GRAALVM_VERSION=`native-image --version`
+GRAALVM_VERSION=`$GRAALVM_HOME/bin/native-image --version`
 echo "Compiling $ARTIFACT with $GRAALVM_VERSION"
-{ time native-image \
+{ time $GRAALVM_HOME/bin/native-image \
   -H:Name=$ARTIFACT \
   -Dspring.spel.ignore=true \
   -Dspring.native.remove-xml-support=true \
