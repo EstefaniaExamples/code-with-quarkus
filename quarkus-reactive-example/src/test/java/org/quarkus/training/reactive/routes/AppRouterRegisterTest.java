@@ -25,11 +25,13 @@ public class AppRouterRegisterTest  {
                 .body(is("[ {\n" +
                         "  \"id\" : 997,\n" +
                         "  \"title\" : \"Understanding Bean Validation\",\n" +
-                        "  \"isbn_13\" : \"9781980399025\"\n" +
+                        "  \"description\" : \"In this fascicle will you will learn Bean Validation and use its different APIs to apply constraints on a bean, validate all sorts of constraints and write your own constraints\",\n" +
+                        "  \"author\" : \"Antonio Goncalves\"\n" +
                         "}, {\n" +
                         "  \"id\" : 998,\n" +
                         "  \"title\" : \"Understanding JPA\",\n" +
-                        "  \"isbn_13\" : \"9781093918977\"\n" +
+                        "  \"description\" : \"In this fascicle, you will learn Java Persistence API, its annotations for mapping entities, as well as the Java Persistence Query Language and entity life cycle\",\n" +
+                        "  \"author\" : \"Antonio Goncalves\"\n" +
                         "} ]"));
     }
 
@@ -45,7 +47,8 @@ public class AppRouterRegisterTest  {
                 .body(is("{\n" +
                         "  \"id\" : 998,\n" +
                         "  \"title\" : \"Understanding JPA\",\n" +
-                        "  \"isbn_13\" : \"9781093918977\"\n" +
+                        "  \"description\" : \"In this fascicle, you will learn Java Persistence API, its annotations for mapping entities, as well as the Java Persistence Query Language and entity life cycle\",\n" +
+                        "  \"author\" : \"Antonio Goncalves\"\n" +
                         "}"));
     }
 

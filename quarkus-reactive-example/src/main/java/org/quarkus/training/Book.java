@@ -17,20 +17,18 @@ public class Book {
     @JsonProperty
     public String title;
     @JsonProperty
-    public String isbn_13;
+    public String description;
+    @JsonProperty
+    public String author;
 
     public Book() {
     }
 
-    public Book(String title, String isbn_13) {
-        this.title = title;
-        this.isbn_13 = isbn_13;
-    }
-
-    public Book(Long id, String title, String isbn_13) {
+    public Book(final Long id, final String title, final String description, final String author) {
         this.id = id;
         this.title = title;
-        this.isbn_13 = isbn_13;
+        this.author = author;
+        this.description = description;
     }
 
     // The from method converts a Row instance to a Fruit instance.
@@ -38,31 +36,32 @@ public class Book {
     private static Book from(final Row row) {
         return new Book(row.getLong("id"),
                 row.getString("title"),
-                row.getString("isbn_13"));
+                row.getString("description"),
+                row.getString("author"));
     }
 
     public static Multi<Book> findAll(final PgPool client) {
-        return client.query("SELECT id, isbn_13, title FROM book ORDER BY title ASC")
+        return client.query("SELECT id, title, description, author FROM books ORDER BY title ASC")
                 .execute()
                 .onItem().transformToMulti(set -> Multi.createFrom().iterable(set))
                 .onItem().transform(Book::from);
     }
 
     public static Uni<Book> findById(final PgPool client, final Long id) {
-        return client.preparedQuery("SELECT id, title, isbn_13 FROM book WHERE id = $1")
+        return client.preparedQuery("SELECT id, title, description, author FROM books WHERE id = $1")
                 .execute(Tuple.of(id))
                 .onItem().transform(RowSet::iterator)
                 .onItem().transform(iterator -> iterator.hasNext() ? from(iterator.next()) : null);
     }
 
     public Uni<Long> save(final PgPool client) {
-        return client.preparedQuery("INSERT INTO book (id, title, isbn_13) VALUES ($1, $2, $3) RETURNING id")
-                .execute(Tuple.of(id, title, isbn_13))
+        return client.preparedQuery("INSERT INTO books (id, title, description, author) VALUES ($1, $2, $3) RETURNING id")
+                .execute(Tuple.of(id, title, author))
                 .onItem().transform(pgRowSet -> pgRowSet.iterator().next().getLong("id"));
     }
 
     public static Uni<Boolean> delete(final PgPool client, Long id) {
-        return client.preparedQuery("DELETE FROM book WHERE id = $1")
+        return client.preparedQuery("DELETE FROM books WHERE id = $1")
                 .execute(Tuple.of(id))
                 .onItem().transform(pgRowSet -> pgRowSet.rowCount() == 1);
     }

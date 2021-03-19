@@ -1,3 +1,6 @@
+server:
+  port : 8084
+
 logging:
   level:
     org:
@@ -10,7 +13,7 @@ books-datasource:
   host: "localhost"
   port: 5432
   database: "books_database"
-  credentials: "wmS4Nal7gXl290hTuEFfkvDxphj8GijqsdDcC8IfyCQlnvPF9xiBVZeeVMZE4RjC"
+  credentials: "book"
   read-only: false
   pool:
     min-connections: 1
