@@ -1,5 +1,7 @@
 package org.springboot.training;
 
+import org.springboot.training.model.Book;
+import org.springboot.training.repositories.BookRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

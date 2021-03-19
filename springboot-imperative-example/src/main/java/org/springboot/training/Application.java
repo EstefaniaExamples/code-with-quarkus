@@ -2,16 +2,12 @@ package org.springboot.training;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@SpringBootApplication(
-		exclude = SpringDataWebAutoConfiguration.class,
-		proxyBeanMethods = false
-)
+@SpringBootApplication(proxyBeanMethods = false)
 public class Application {
 	private static ApplicationContext applicationContext;
 

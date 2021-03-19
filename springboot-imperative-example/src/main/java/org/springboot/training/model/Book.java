@@ -1,4 +1,4 @@
-package org.springboot.training;
+package org.springboot.training.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
